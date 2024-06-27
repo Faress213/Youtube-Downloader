@@ -160,7 +160,7 @@ class services with ChangeNotifier {
 
   void getButtonText() {
     if (isSuccessfulDownload) {
-      buttonString = 'Your File Downloaded Successfully ';
+      buttonString = 'Done :)';
       isButtonClickable = false;
       notifyListeners();
     }
@@ -276,8 +276,7 @@ class services with ChangeNotifier {
   }
 
   void _showDialog(String message, bool wantIcon, BuildContext context) {
-    if (!context.mounted) return; // Check if the widget is still mounted
-
+    if (!context.mounted) return;
     showDialog(
       context: context,
       builder: (BuildContext context) {
