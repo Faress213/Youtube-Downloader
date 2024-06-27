@@ -28,7 +28,7 @@ class DownloadButton extends StatelessWidget {
                 style: const TextStyle(
                     color: Color(0xff4a4a4a),
                     fontWeight: FontWeight.w500,
-                    fontSize: 17),
+                    fontSize: 12),
               ),
             ),
             icon: const Icon(Icons.download));
