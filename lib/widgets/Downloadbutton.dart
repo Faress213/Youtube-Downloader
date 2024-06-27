@@ -24,7 +24,7 @@ class DownloadButton extends StatelessWidget {
             },
             label: Center(
               child: Text(
-                value.buttonString!,
+                value.buttonString ?? 'Download File',
                 style: const TextStyle(
                     color: Color(0xff4a4a4a),
                     fontWeight: FontWeight.w500,
@@ -32,8 +32,6 @@ class DownloadButton extends StatelessWidget {
               ),
             ),
             icon: const Icon(Icons.download));
-
-       
       },
     );
   }
