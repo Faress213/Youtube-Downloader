@@ -304,7 +304,13 @@ class services with ChangeNotifier {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Storage Permission Required'),
+          title: const Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Text(
+              'Storage Permission Required',
+              style: TextStyle(fontSize: 15),
+            ),
+          ),
           content: const Text('Please grant access to storage to continue.'),
           actions: <Widget>[
             TextButton(
