@@ -70,6 +70,6 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/appBar.json
+    - assets/download.json
     - assets/logo-development.jpg
     - assets/download.png

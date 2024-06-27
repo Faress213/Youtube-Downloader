@@ -60,62 +60,64 @@ class _FileDownloaderState extends State<FileDownloader>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-          backgroundColor: Colors.white,
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Text(
-                "Youtube Downloader",
-                style: TextStyle(color: Color.fromARGB(255, 16, 143, 247)),
-              ),
-              Lottie.asset(
-                'assets/appBar.json',
-                height: 50,
-                width: 50,
-              )
-            ],
-          )),
-      body: Consumer<services>(
-        builder: (BuildContext context, value, Widget? child) {
-          return Container(
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage(BackgroundImage),
-                fit: BoxFit.cover,
-              ),
-            ),
-            child: CustomScrollView(
-              physics: const BouncingScrollPhysics(),
-              slivers: [
-                const SliverToBoxAdapter(
-                  child: SizedBox(
-                    height: 200,
-                  ),
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: const Color(0xff10475b),
+        appBar: AppBar(
+            backgroundColor: const Color(0xff10475b),
+            title: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text(
+                  "Youtube Downloader",
+                  style: TextStyle(color: Colors.white),
                 ),
-                SliverToBoxAdapter(
-                  child: Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Column(
-                      children: [
-                        const LinkTextfield(),
-                        const SizedBox(height: 20),
-                        Provider.of<services>(context, listen: true)
-                                .isDownloading
-                            ? const StartDownloadRow()
-                            : const DownloadButton(),
-                        if (value.statusMessage.isNotEmpty)
-                          const AlertMessage(),
-                      ],
+                Lottie.asset(
+                  'assets/download.json',
+                  height: 50,
+                  width: 50,
+                )
+              ],
+            )),
+        body: Consumer<services>(
+          builder: (BuildContext context, value, Widget? child) {
+            return Container(
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(BackgroundImage),
+                  fit: BoxFit.cover,
+                ),
+              ),
+              child: CustomScrollView(
+                physics: const BouncingScrollPhysics(),
+                slivers: [
+                  const SliverToBoxAdapter(
+                    child: SizedBox(
+                      height: 200,
                     ),
                   ),
-                ),
-              ],
-            ),
-          );
-        },
+                  SliverToBoxAdapter(
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Column(
+                        children: [
+                          const LinkTextfield(),
+                          const SizedBox(height: 20),
+                          Provider.of<services>(context, listen: true)
+                                  .isDownloading
+                              ? const StartDownloadRow()
+                              : const DownloadButton(),
+                          if (value.statusMessage.isNotEmpty)
+                            const AlertMessage(),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            );
+          },
+        ),
       ),
     );
   }
