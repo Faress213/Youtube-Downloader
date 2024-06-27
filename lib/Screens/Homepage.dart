@@ -67,7 +67,10 @@ class _FileDownloaderState extends State<FileDownloader>
           title: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text("Youtube Downloader"),
+              const Text(
+                "Youtube Downloader",
+                style: TextStyle(color: Color.fromARGB(255, 16, 143, 247)),
+              ),
               Lottie.asset(
                 'assets/appBar.json',
                 height: 50,

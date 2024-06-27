@@ -13,52 +13,27 @@ class DownloadButton extends StatelessWidget {
     return Consumer<services>(
       builder: (BuildContext context, value, Widget? child) {
         return SliderButton(
-          height: 60,
-          disable: value.isDownloading,
-          action: () async {
-            if (value.isButtonClickable) {
-              value.requestPermission(context);
-            } else {}
+            height: 60,
+            disable: value.isDownloading,
+            action: () async {
+              if (value.isButtonClickable) {
+                value.requestPermission(context);
+              } else {}
 
-            return value.isDownloading;
-          },
-          label: Center(
-            child: Text(
-              value.buttonString!,
-              style: const TextStyle(
-                  color: Color(0xff4a4a4a),
-                  fontWeight: FontWeight.w500,
-                  fontSize: 17),
-            ),
-          ),
-          icon: const Text(
-            "D",
-            style: TextStyle(
-              color: Colors.black,
-              fontWeight: FontWeight.w400,
-              fontSize: 44,
-            ),
-          ),
-        );
-
-        ElevatedButton(
-          style: ButtonStyle(
-            shape: WidgetStateProperty.all<RoundedRectangleBorder>(
-              RoundedRectangleBorder(
-                borderRadius:
-                    BorderRadius.circular(12.0), // Set the border radius here
+              return value.isDownloading;
+            },
+            label: Center(
+              child: Text(
+                value.buttonString!,
+                style: const TextStyle(
+                    color: Color(0xff4a4a4a),
+                    fontWeight: FontWeight.w500,
+                    fontSize: 17),
               ),
             ),
-          ),
-          onPressed: value.isDownloading
-              ? null
-              : () async {
-                  if (value.isButtonClickable) {
-                    value.requestPermission(context);
-                  } else {}
-                },
-          child: Text(value.buttonString ?? 'Download File'),
-        );
+            icon: const Icon(Icons.download));
+
+       
       },
     );
   }
