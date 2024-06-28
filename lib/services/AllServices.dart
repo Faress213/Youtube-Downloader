@@ -205,6 +205,7 @@ class services with ChangeNotifier {
     final regularUrlPattern = RegExp(r'v=([a-zA-Z0-9_-]+)');
     final embedUrlPattern = RegExp(r'youtube\.com\/embed\/([a-zA-Z0-9_-]+)');
     final shortsUrlPattern = RegExp(r'youtube\.com\/shorts\/([a-zA-Z0-9_-]+)');
+    final liveUrlPattern = RegExp(r'youtube\.com\/live\/([a-zA-Z0-9_-]+)');
 
     var shortMatch = shortUrlPattern.firstMatch(url);
     if (shortMatch != null) {
@@ -224,6 +225,11 @@ class services with ChangeNotifier {
     var shortsMatch = shortsUrlPattern.firstMatch(url);
     if (shortsMatch != null) {
       return shortsMatch.group(1);
+    }
+
+    var liveMatch = liveUrlPattern.firstMatch(url);
+    if (liveMatch != null) {
+      return liveMatch.group(1);
     }
 
     return null;
