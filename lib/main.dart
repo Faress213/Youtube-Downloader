@@ -3,8 +3,6 @@ import 'package:downv2/Screens/Homepage.dart';
 import 'package:downv2/services/AllServices.dart';
 import 'package:downv2/utils/consts.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_downloader/flutter_downloader.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:http/http.dart' as http;
 import 'package:path_provider/path_provider.dart';
@@ -17,21 +15,6 @@ import 'package:provider/provider.dart';
 
 void main() async{
 WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
-  // Initialize the FlutterLocalNotificationsPlugin
-  FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
-
-  // Initialize settings for Android
-  const AndroidInitializationSettings initializationSettingsAndroid = AndroidInitializationSettings('@mipmap/ic_launcher');
-
-
-
-  // Combine both platform-specific initialization settings
-  final InitializationSettings initializationSettings = InitializationSettings(
-    android: initializationSettingsAndroid,
-  );
-
-  // Initialize the plugin
-  await flutterLocalNotificationsPlugin.initialize(initializationSettings);
    FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   runApp(ChangeNotifierProvider(create: (context) => services(),child: MyApp()));
 }

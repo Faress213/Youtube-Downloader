@@ -5,7 +5,6 @@ import 'package:downv2/widgets/DownloadRow.dart';
 import 'package:downv2/widgets/DownloadButton.dart';
 import 'package:downv2/widgets/LinkTextField.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
@@ -19,7 +18,7 @@ class FileDownloader extends StatefulWidget {
 
 class _FileDownloaderState extends State<FileDownloader>
     with WidgetsBindingObserver {
-  late FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
+
 
   @override
   void initState() {
@@ -38,25 +37,9 @@ class _FileDownloaderState extends State<FileDownloader>
     super.dispose();
   }
 
-  void _showNotification(String title, String body) async {
-    var androidPlatformChannelSpecifics = const AndroidNotificationDetails(
-      'your_channel_id',
-      'your_channel_name',
-      importance: Importance.max,
-      priority: Priority.high,
-      ticker: 'ticker',
-    );
+  
 
-    var platformChannelSpecifics =
-        NotificationDetails(android: androidPlatformChannelSpecifics);
 
-    await flutterLocalNotificationsPlugin.show(
-      0,
-      title,
-      body,
-      platformChannelSpecifics,
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
