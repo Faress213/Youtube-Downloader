@@ -90,8 +90,8 @@ class _FileDownloaderState extends State<FileDownloader>
                                   .isDownloading
                               ? const StartDownloadRow()
                               : const DownloadButton(),
-                          if (value.statusMessage.isNotEmpty)
-                            const AlertMessage(),
+                                      Provider.of<services>(context, listen: true)
+                                  .isDownloading?Text((Provider.of<services>(context, listen: true).progress*100).toStringAsFixed(2)+'%'):Container()
                         ],
                       ),
                     ),
